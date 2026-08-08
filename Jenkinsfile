@@ -19,9 +19,10 @@ pipeline {
 
         stage('Diagnose') {
             steps {
-                bat 'dir src\\test\\java /s'
-            }
-        }
+                bat 'dir target\\test-classes /s'
+                bat 'mvn -B test -X -DREQRES_PUBLIC_KEY=%REQRES_PUBLIC_KEY% 2>&1 | findstr /i "include exclude scan class"'
+    }
+}
 
         stage('Build') {
             steps {
