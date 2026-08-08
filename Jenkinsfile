@@ -25,13 +25,13 @@ pipeline {
 
         stage('REST Assured Tests') {
             steps {
-                bat 'mvn -B test -Dtest=org.rafferty.ProductsApiTest,org.rafferty.ProductsApiNegativeTest -DREQRES_PUBLIC_KEY=%REQRES_PUBLIC_KEY%'
+                bat 'mvn -B test -Dtest="org.rafferty.ProductsApiTest+org.rafferty.ProductsApiNegativeTest" -DREQRES_PUBLIC_KEY=%REQRES_PUBLIC_KEY%'
             }
         }
 
         stage('Karate Tests') {
             steps {
-                bat 'mvn -B test -Dtest=karate.KarateTestRunner -DREQRES_PUBLIC_KEY=%REQRES_PUBLIC_KEY%'
+                bat 'mvn -B test -Dtest="karate.KarateTestRunner#testAll+karate.KarateTestRunner#testSmoke" -DREQRES_PUBLIC_KEY=%REQRES_PUBLIC_KEY%'
             }
         }
     }
