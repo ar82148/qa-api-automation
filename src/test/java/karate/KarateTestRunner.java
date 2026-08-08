@@ -13,7 +13,7 @@ public class KarateTestRunner {
         Results results = Runner.path("classpath:karate")
                 .tags("~@ignore")
                 .outputHtmlReport(true)
-                .parallel(5);
+                .parallel(1);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
     }
 
@@ -22,7 +22,7 @@ public class KarateTestRunner {
         Results results = Runner.path("classpath:karate")
                 .tags("@smoke", "~@ignore")
                 .outputHtmlReport(true)
-                .parallel(5);
+                .parallel(1);
         assertEquals(0, results.getFailCount(), results.getErrorMessages());
     }
 }
