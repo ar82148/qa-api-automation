@@ -25,13 +25,13 @@ pipeline {
 
         stage('REST Assured Tests') {
             steps {
-                bat 'mvn -B test -Dtest=ProductsApiTest,ProductsApiNegativeTest -DREQRES_PUBLIC_KEY=%REQRES_PUBLIC_KEY%'
+                bat 'mvn -B test -Dtest=org.rafferty.ProductsApiTest,org.rafferty.ProductsApiNegativeTest -DREQRES_PUBLIC_KEY=%REQRES_PUBLIC_KEY%'
             }
         }
 
         stage('Karate Tests') {
             steps {
-                bat 'mvn -B test -Dtest=KarateTestRunner -DREQRES_PUBLIC_KEY=%REQRES_PUBLIC_KEY%'
+                bat 'mvn -B test -Dtest=karate.KarateTestRunner -DREQRES_PUBLIC_KEY=%REQRES_PUBLIC_KEY%'
             }
         }
     }
@@ -39,7 +39,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'target/karate-reports/**/*', allowEmptyArchive: true
-            junit 'target/surefire-reports/*.xml'
+            junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: true
         }
         success {
             echo 'All tests passed!'
