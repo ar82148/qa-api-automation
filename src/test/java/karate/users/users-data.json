@@ -1,0 +1,5 @@
+[
+  { "name": "Jake Rafferty", "job": "QA Engineer",  "expectedJob": "QA Engineer"  },
+  { "name": "John Locke",    "job": "SDET",          "expectedJob": "SDET"          },
+  { "name": "Tom Sawyer",      "job": "Test Architect", "expectedJob": "Test Architect" }
+]

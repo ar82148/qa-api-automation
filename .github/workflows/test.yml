@@ -25,4 +25,4 @@ jobs:
         env:
           REQRES_PUBLIC_KEY: ${{ secrets.REQRES_PUBLIC_KEY }}
           REQRES_MANAGE_KEY: ${{ secrets.REQRES_MANAGE_KEY }}
-        run: mvn -B test
+        run: mvn -B test -DREQRES_PUBLIC_KEY=${{ secrets.REQRES_PUBLIC_KEY }}
