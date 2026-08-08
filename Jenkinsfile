@@ -17,6 +17,12 @@ pipeline {
             }
         }
 
+        stage('Diagnose') {
+            steps {
+                bat 'dir src\\test\\java /s'
+            }
+        }
+
         stage('Build') {
             steps {
                 bat 'mvn -B clean compile'
